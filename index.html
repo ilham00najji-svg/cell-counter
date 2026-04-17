@@ -1,0 +1,80 @@
+<!--
+  Projet  : Comptage de Cellules Médullaires
+  Module  : Nouvelles Technologies et IA dans l'enseignement des sciences
+  Prof    : Pr. Ahmed MHAMDI
+  Auteur  : Ilham NAJJI
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comptage Médullaire</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- p5.js library from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+
+  <!-- Project styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header section -->
+  <header id="app-header">
+    <h1>Comptage de cellules médullaires</h1>
+    <div id="header-controls">
+      <div id="total-count">0</div>
+      <div id="header-btns">
+        <button id="summary-btn" onclick="showSummary()">📊 Résumé</button>
+        <button id="erase-btn" onclick="eraseCountsAndRedraw()">🗑️ Effacer</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modal de résumé -->
+  <div id="summary-overlay" onclick="closeSummary()">
+    <div id="summary-modal" onclick="event.stopPropagation()">
+      <div id="summary-header">
+        <h2>Résumé du comptage</h2>
+        <div id="summary-header-btns">
+          <button id="print-btn" onclick="window.print()">🖨️ Imprimer</button>
+          <button id="close-btn" onclick="closeSummary()">✕</button>
+        </div>
+      </div>
+      <div id="summary-body"></div>
+    </div>
+  </div>
+
+  <!-- Category tabs -->
+  <nav id="tabs">
+    <button class="tab active" onclick="setActiveTab(0)">Érythrocytaire</button>
+    <button class="tab" onclick="setActiveTab(1)">Leucocytes</button>
+  </nav>
+
+  <!-- Click hint -->
+  <p id="click-hint">Clic gauche : +1 &nbsp;|&nbsp; Clic droit : −1</p>
+
+  <!-- p5.js canvas will be inserted here -->
+  <main id="canvas-container"></main>
+
+  <!-- Footer -->
+  <footer id="app-footer">
+    <span class="footer-module">Nouvelles Technologies et IA dans l’enseignement des sciences</span>
+    <span class="footer-sep">&bull;</span>
+    <span>Pr. Ahmed MHAMDI</span>
+    <span class="footer-sep">&bull;</span>
+    <span>Ilham NAJJI</span>
+  </footer>
+
+  <!-- Project scripts (order matters) -->
+  <script src="js/cellData.js"></script>
+  <script src="js/cellDrawing.js"></script>
+  <script src="js/sketch.js"></script>
+
+</body>
+</html>
